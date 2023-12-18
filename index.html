@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Record Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>Healthcare Patient Record Management System</h1>
+        </div>
+        <form id="patientForm" action="http://127.0.0.1:3000/post" method="post">
+            <div class="input-group">
+                <label for="id">Patient ID:</label>
+                <input type="text" id="id" name="id" autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="date">Date:</label>
+                <input type="text" id="date" name="date"  autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age" autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="history">Medical History:</label>
+                <input type="text" id="history" name="history" autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="prescriptions">Prescriptions:</label>
+                <input type="text" id="prescriptions" name="prescriptions" autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="testresults">Test Results:</label>
+                <input type="text" id="testresults" name="testresults" autocomplete="off">
+            </div>
+            <p id="status"></p>
+            <button onclick="addPatientRecord(event)">Add Patient Record</button>
+            <button id="openModalButton" onclick="openModal(event)">Modification Record</button>
+            <button type="button" onclick="displayAllPatients()">Display All Patients</button>
+            <button id="clearButton" onclick="clearForm(event) ">Clear Form</button>
+            <!-- <button onclick="resetDatabase()" id="resetbtn">Reset Database</button> -->
+            <p id="status"></p>
+        </form>
+
+
+        <div id="modifyModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModifyModal()">&times;</span>
+                <form id="modifyForm">
+                    <label for="modifyId">ID to Modify:</label>
+                    <input type="text" id="modifyId" required>
+
+                    <label for="modifydate">Modified Date:</label>
+                    <input type="text" id="modifydate">
+
+                    <label for="modifyName">Modified Name:</label>
+                    <input type="text" id="modifyName">
+        
+                    <label for="modifyAge">Modified Age:</label>
+                    <input type="text" id="modifyAge">
+        
+                    <label for="modifyAddress">Modified Address:</label>
+                    <input type="text" id="modifyAddress">
+        
+                    <label for="modifyHistory">Modified Medical History:</label>
+                    <textarea id="modifyHistory"></textarea>
+        
+                    <label for="modifyPrescriptions">Modified Prescriptions:</label>
+                    <textarea id="modifyPrescriptions"></textarea>
+        
+                    <label for="modifyTestResults">Modified Test Results:</label>
+                    <textarea id="modifyTestResults"></textarea>
+                    <span class="close" onclick="closeModifyModal()">×</span>
+                    <button onclick="modifyPatientRecord(event)" id="modifyButton">Modify Patient</button>
+                </form>
+                <p id="modifyStatus"></p>
+            </div>
+        </div>
+        
+        <div id="patientList"></div>
+        <div id="patientModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModifyModal()">×</span>
+                <div id="patientDetails"></div>
+            </div>
+        </div>
+
+    <script src="script.js" defer></script>
+</body>
